@@ -8,6 +8,10 @@ exports.add = (req,res) => {
 exports.subtract = (req, res) => {
     const {num1,num2} = req.body;
     const difference = num1 - num2;
+    if(typeof num1 !== 'number' && num2 !== 'number'){
+        res.status(400).json({message: 'Supplied data must be a number'});
+                return;
+    }
     res.json({result: difference});
 
 };
